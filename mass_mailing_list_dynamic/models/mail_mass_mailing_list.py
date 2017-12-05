@@ -26,7 +26,7 @@ class MassMailingList(models.Model):
     sync_domain = fields.Char(
         string="Synchronization critera",
         default="[('opt_out', '=', False), ('email', '!=', False)]",
-        required=True,
+        required=False,
         help="Filter partners to sync in this list",
     )
 

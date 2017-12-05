@@ -19,7 +19,7 @@ class MassMailingList(models.Model):
             ("full", "Add and remove records as needed"),
         ],
         default="add",
-        required=True,
+        required=False,
         help="Choose the syncronization method for this list if you want to "
              "make it dynamic",
     )

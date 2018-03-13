@@ -9,7 +9,8 @@ import json
 import requests
 from datetime import datetime
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools import email_split
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -221,6 +222,8 @@ class MailTrackingEmail(models.Model):
         """
         api_key, api_url, domain, validation_key = self._mailgun_values()
         for tracking in self:
+            if not tracking.mail_message_id:
+                raise UserError(_('There is no tracked message!'))
             message_id = tracking.mail_message_id.message_id.replace(
                 "<", "").replace(">", "")
             res = requests.get(
@@ -239,10 +242,15 @@ class MailTrackingEmail(models.Model):
             if "items" not in content:
                 raise ValidationError(_("Event information not longer stored"))
             for item in content["items"]:
+                # mailgun event hasn't been synced and recipient is the same as
+                # in the evaluated tracking. We use email_split since tracking
+                # recipient could come in format: "example" <to@dest.com>
                 if not self.env['mail.tracking.event'].search(
-                        [('mailgun_id', '=', item["id"])]):
+                        [('mailgun_id', '=', item["id"])]) and (
+                            item.get("recipient", "") ==
+                            email_split(tracking.recipient)[0]):
                     mapped_event_type = self._mailgun_event_type_mapping.get(
-                        item["event"]) or False
+                        item["event"], item["event"])
                     metadata = self._mailgun_metadata(
                         mapped_event_type, item, {})
                     tracking.event_create(mapped_event_type, metadata)

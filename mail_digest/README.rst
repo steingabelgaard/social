@@ -42,6 +42,15 @@ Specifically:
 NOTE: under the hood the digest notification logic excludes followers to be notified,
 since you really want to notify only mail.digest's partner.
 
+NOTE 2: Odoo's mail machinery has an option `force_send`
+to send the email immediately without waiting for the mail queue to be processed.
+When this option is used the email is sent right away
+and the message record is deleted right after.
+
+A typical use case is the reset password mail.
+We assume that if you use that option you really want the email to go out "now"
+so when `force_send` is used, digest machinery is completely bypassed.
+
 
 Global settings
 ---------------
@@ -49,6 +58,14 @@ Global settings
 By default digest functionality is enabled for every message type ('email', 'comment', 'notification').
 You change this with the config param `mail_digest.enabled_message_types`
 whereas you can specify message types separated by comma.
+
+
+Digest rendering preview
+------------------------
+
+You can check how messages are formatted per each mail subtype by going to `/digest/layout-preview` in your browser.
+
+.. image:: ./images/digest_layout_preview.png
 
 
 Known issues / Roadmap

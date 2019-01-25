@@ -29,4 +29,4 @@ msgstr ""
 #: code:addons/mail_debrand/models/mail_template.py:24
 #, python-format
 msgid "using"
-msgstr ""
+msgstr "vha."

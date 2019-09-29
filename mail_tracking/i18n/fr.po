@@ -64,6 +64,12 @@ msgstr ""
 "temporairement sur le serveur Mail Exchange (MX) du destinataire.\n"
 
 #. module: mail_tracking
+#: model:ir.model.fields,help:mail_tracking.field_mail_compose_message_email_cc
+#: model:ir.model.fields,help:mail_tracking.field_mail_message_email_cc
+msgid "Additional recipients that receive a \"Carbon Copy\" of the e-mail"
+msgstr ""
+
+#. module: mail_tracking
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
 msgid "Bounce"
 msgstr "Erreurs de remise"
@@ -82,6 +88,15 @@ msgstr "Type de rebond"
 #: selection:mail.tracking.email,state:0
 msgid "Bounced"
 msgstr "Rebonds"
+
+#. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_thread.py:44
+#: code:addons/mail_tracking/models/mail_thread.py:48
+#: model:ir.model.fields,field_description:mail_tracking.field_mail_compose_message_email_cc
+#: model:ir.model.fields,field_description:mail_tracking.field_mail_message_email_cc
+#, python-format
+msgid "Cc"
+msgstr ""
 
 #. module: mail_tracking
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
@@ -142,10 +157,12 @@ msgid "Deferred"
 msgstr "Reporté"
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:41
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_email_search
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
 #: selection:mail.tracking.email,state:0
 #: selection:mail.tracking.event,event_type:0
+#, python-format
 msgid "Delivered"
 msgstr "Livré"
 
@@ -178,13 +195,22 @@ msgid "Email Score"
 msgstr "Score du courriel"
 
 #. module: mail_tracking
+#: model:ir.model,name:mail_tracking.model_mail_thread
+#, fuzzy
+#| msgid "Email Score"
+msgid "Email Thread"
+msgstr "Score du courriel"
+
+#. module: mail_tracking
 #: model:ir.ui.view,arch_db:mail_tracking.view_res_partner_filter
 msgid "Email bounced"
 msgstr "Email retourné"
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:40
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_form
 #: selection:mail.tracking.email,state:0
+#, python-format
 msgid "Error"
 msgstr "Erreur"
 
@@ -310,7 +336,7 @@ msgstr "Message"
 
 #. module: mail_tracking
 #. openerp-web
-#: code:addons/mail_tracking/static/src/js/mail_tracking.js:61
+#: code:addons/mail_tracking/static/src/js/mail_tracking.js:59
 #, python-format
 msgid "Message tracking"
 msgstr "Destinataire du courriel"
@@ -335,7 +361,9 @@ msgid "Open"
 msgstr "Ouverte"
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:42
 #: selection:mail.tracking.email,state:0
+#, python-format
 msgid "Opened"
 msgstr "Ouvert"
 
@@ -396,10 +424,12 @@ msgid "Sender email"
 msgstr "Courriel de l'expéditeur"
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:41
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_email_search
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
 #: selection:mail.tracking.email,state:0
 #: selection:mail.tracking.event,event_type:0
+#, python-format
 msgid "Sent"
 msgstr "Envoyé"
 
@@ -426,6 +456,12 @@ msgid "State"
 msgstr "État"
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:43
+#, python-format
+msgid "Status: %s"
+msgstr ""
+
+#. module: mail_tracking
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_email_name
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_email_search
 msgid "Subject"
@@ -441,7 +477,7 @@ msgstr "Heure"
 
 #. module: mail_tracking
 #. openerp-web
-#: code:addons/mail_tracking/static/src/xml/mail_tracking.xml:46
+#: code:addons/mail_tracking/static/src/xml/mail_tracking.xml:52
 #, python-format
 msgid "To:"
 msgstr "À :"
@@ -467,7 +503,7 @@ msgstr "Suivi du courriel: événements"
 
 #. module: mail_tracking
 #. openerp-web
-#: code:addons/mail_tracking/static/src/js/mail_tracking.js:41
+#: code:addons/mail_tracking/static/src/js/mail_tracking.js:39
 #, python-format
 msgid "Tracking partner"
 msgstr "Partenaire suivi"
@@ -487,6 +523,12 @@ msgstr "URL"
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event_timestamp
 msgid "UTC timestamp"
 msgstr "Date et Heure en UTC"
+
+#. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:42
+#, python-format
+msgid "Unknown"
+msgstr ""
 
 #. module: mail_tracking
 #: model:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
@@ -528,6 +570,12 @@ msgstr "type de navigateur"
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event_user_country_id
 msgid "User country"
 msgstr "Pays de l'utilisateur"
+
+#. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_message.py:40
+#, python-format
+msgid "Waiting"
+msgstr ""
 
 #. module: mail_tracking
 #: model:ir.model,name:mail_tracking.model_ir_mail_server

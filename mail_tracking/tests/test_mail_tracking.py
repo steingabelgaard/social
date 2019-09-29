@@ -4,6 +4,7 @@
 import mock
 from odoo.tools import mute_logger
 import time
+import base64
 from odoo import http
 from odoo.tests.common import TransactionCase
 from ..controllers.main import MailTrackingController, BLANK
@@ -98,10 +99,11 @@ class TestMailTracking(TransactionCase):
         status = message_dict['partner_trackings'][0]
         # Tracking status must be sent and
         # mail tracking must be the one search before
-        self.assertEqual(status[0], 'sent')
-        self.assertEqual(status[1], tracking_email.id)
-        self.assertEqual(status[2], self.recipient.display_name)
-        self.assertEqual(status[3], self.recipient.id)
+        self.assertEqual(status['status'], 'sent')
+        self.assertEqual(status['tracking_id'], tracking_email.id)
+        self.assertEqual(status['recipient'], self.recipient.display_name)
+        self.assertEqual(status['partner_id'], self.recipient.id)
+        self.assertEqual(status['isCc'], False)
         # And now open the email
         metadata = {
             'ip': '127.0.0.1',
@@ -111,6 +113,62 @@ class TestMailTracking(TransactionCase):
         }
         tracking_email.event_create('open', metadata)
         self.assertEqual(tracking_email.state, 'opened')
+
+    def _check_partner_trackings(self, message):
+        message_dict = message.message_format()[0]
+        self.assertEqual(len(message_dict['partner_trackings']), 3)
+        # mail cc
+        foundPartner = False
+        foundNoPartner = False
+        for tracking in message_dict['partner_trackings']:
+            if tracking['partner_id'] == self.sender.id:
+                foundPartner = True
+                self.assertTrue(tracking['isCc'])
+            elif tracking['recipient'] == 'unnamed@test.com':
+                foundNoPartner = True
+                self.assertFalse(tracking['partner_id'])
+                self.assertTrue(tracking['isCc'])
+            elif tracking['partner_id'] == self.recipient.id:
+                self.assertFalse(tracking['isCc'])
+        self.assertTrue(foundPartner)
+        self.assertTrue(foundNoPartner)
+
+    def test_email_cc(self):
+        message = self.env['mail.message'].create({
+            'subject': 'Message test',
+            'author_id': self.sender.id,
+            'email_from': self.sender.email,
+            'message_type': 'comment',
+            'model': 'res.partner',
+            'res_id': self.recipient.id,
+            'partner_ids': [(4, self.recipient.id)],
+            'email_cc': 'unnamed@test.com, sender@example.com',
+            'body': '<p>This is a test message</p>',
+        })
+        self._check_partner_trackings(message)
+        # suggested recipients
+        recipients = self.recipient.message_get_suggested_recipients()
+        suggested_mails = {
+            email[1] for email in recipients[self.recipient.id]
+        }
+        self.assertIn('unnamed@test.com', suggested_mails)
+        self.assertEqual(len(recipients[self.recipient.id][0]), 3)
+        # Repeated Cc recipients
+        message = self.env['mail.message'].create({
+            'subject': 'Message test',
+            'author_id': self.sender.id,
+            'email_from': self.sender.email,
+            'message_type': 'comment',
+            'model': 'res.partner',
+            'res_id': self.recipient.id,
+            'partner_ids': [(4, self.recipient.id)],
+            'email_cc': 'unnamed@test.com, sender@example.com'
+                        ', recipient@example.com',
+            'body': '<p>This is another test message</p>',
+        })
+        recipients = self.recipient.message_get_suggested_recipients()
+        self.assertEqual(len(recipients[self.recipient.id][0]), 3)
+        self._check_partner_trackings(message)
 
     def mail_send(self, recipient):
         mail = self.env['mail.mail'].create({
@@ -129,7 +187,7 @@ class TestMailTracking(TransactionCase):
     def test_mail_send(self):
         controller = MailTrackingController()
         db = self.env.cr.dbname
-        image = BLANK
+        image = base64.b64decode(BLANK)
         mail, tracking = self.mail_send(self.recipient.email)
         self.assertEqual(mail.email_to, tracking.recipient)
         self.assertEqual(mail.email_from, tracking.sender)

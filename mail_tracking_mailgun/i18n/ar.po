@@ -20,7 +20,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:89
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:93
 #, python-format
 msgid ""
 "%s couldn't be verified. Either the request couln't be completed or the "
@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:79
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:83
 #, python-format
 msgid ""
 "%s failed the mailbox verification. Please check it in order to avoid "
@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:70
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:74
 #, python-format
 msgid ""
 "%s is not a valid email address. Please check it in order to avoid sending "
@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:76
+#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:78
 #, python-format
 msgid "A Mailgun domain value is needed!"
 msgstr ""
@@ -65,13 +65,13 @@ msgid "Contact"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:240
+#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:242
 #, python-format
 msgid "Couldn't retrieve Mailgun information"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:29
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:34
 #, python-format
 msgid ""
 "Email has been bounced: %s\n"
@@ -80,13 +80,13 @@ msgid ""
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:57
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:61
 #, python-format
 msgid "Error %s trying to check mailof connection"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:244
+#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:246
 #, python-format
 msgid "Event information not longer stored"
 msgstr ""
@@ -107,7 +107,7 @@ msgid "Mailgun"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:64
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:68
 #, python-format
 msgid "Mailgun Error. Mailbox verification value wasn't returned"
 msgstr ""
@@ -128,13 +128,13 @@ msgid "Set Bounced"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:70
+#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:72
 #, python-format
 msgid "There is no Mailgun API key!"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:227
+#: code:addons/mail_tracking_mailgun/models/mail_tracking_email.py:229
 #, python-format
 msgid "There is no tracked message!"
 msgstr ""
@@ -145,7 +145,7 @@ msgid "Unset Bounced"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:45
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:49
 #, python-format
 msgid ""
 "You need to configure mailgun.validation_key in order to be able to check "
@@ -158,7 +158,7 @@ msgid "ir.mail_server"
 msgstr ""
 
 #. module: mail_tracking_mailgun
-#: code:addons/mail_tracking_mailgun/models/res_partner.py:32
+#: code:addons/mail_tracking_mailgun/models/res_partner.py:33
 #, python-format
 msgid "unknown"
 msgstr ""

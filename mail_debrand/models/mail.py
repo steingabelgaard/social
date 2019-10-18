@@ -9,8 +9,8 @@ class MailNotification(models.Model):
     _inherit = "mail.notification"
 
     @api.model
-    def _get_signature_footer(self, user_id, res_model=None, res_id=None,
-                              user_signature=True):
+    def get_signature_footer(self, user_id, res_model=None, res_id=None,
+                             user_signature=True):
         """Generate signature footer only with the chosen parts.
 
         Now, you can set ``skip_signature_user=True`` in the context to remove
@@ -44,8 +44,9 @@ class MailNotification(models.Model):
         if website:
             if not website.startswith(('http:', 'https:')):
                 website = "http://" + website
-            company = ("<a href='%s'>%s</a>" %
+            company = ("<a style='color:inherit' href='%s'>%s</a>" %
                        (website, user.company_id.name))
         else:
             company = user.company_id.name
-        return _('Sent by %s') % company
+        sent_by = _('Sent by %s') % company
+        return '<br /><small>%s</small>' % sent_by

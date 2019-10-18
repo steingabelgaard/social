@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: social (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 07:21+0000\n"
-"PO-Revision-Date: 2016-09-09 12:25+0000\n"
+"POT-Creation-Date: 2017-11-16 01:44+0000\n"
+"PO-Revision-Date: 2017-11-23 23:27+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Galician (http://www.transifex.com/oca/OCA-social-8-0/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,date:0
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. module: mail_forward
 #. openerp-web
@@ -204,7 +204,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación"
 
 #. module: mail_forward
 #: field:mail_forward.compose_message,write_uid:0
@@ -375,7 +375,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,type:0
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. module: mail_forward
 #: field:mail_forward.compose_message,use_active_domain:0

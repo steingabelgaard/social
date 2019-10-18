@@ -7,14 +7,16 @@
 # Armando Vulcano Junior <vulcano@uol.com.br>, 2015
 # bossnm11 <bossnm11@gmail.com>, 2014
 # Carles Antoli <carlesantoli@hotmail.com>, 2015
+# Carles Antoli <carlesantoli@hotmail.com>, 2015
 # Chanseok <kcsgoodboy@gmail.com>, 2014
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # danimaribeiro <danimaribeiro@gmail.com>, 2016
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012,2014
 # jeon <bluerespect@nate.com>, 2014
 # John Toro <johntoro@gmail.com>, 2015
 # Jong-Dae Park <jdpark7@gmail.com>, 2013,2015
-# Kevin Min <gr326887@graded.br>, 2015
+# Gu Hong Min <placidmoon1@gmail.com>, 2015
 # Kunwoo Kim <crazyabtmath@naver.com>, 2015
 # LEE SI HYEONG <super2451894@gmail.com>, 2014
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
@@ -29,8 +31,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: social (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 07:21+0000\n"
-"PO-Revision-Date: 2016-09-09 12:25+0000\n"
+"POT-Creation-Date: 2017-04-30 10:21+0000\n"
+"PO-Revision-Date: 2017-03-24 09:00+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-social-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +89,7 @@ msgstr ""
 #: field:base.patch.models.mixin,display_name:0
 #: field:mail.subtype.assign.custom.notifications,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: mail_follower_custom_notification
 #: model:ir.model,name:mail_follower_custom_notification.model_mail_followers
@@ -97,7 +99,7 @@ msgstr ""
 #. module: mail_follower_custom_notification
 #: model:ir.model,name:mail_follower_custom_notification.model_mail_thread
 msgid "Email Thread"
-msgstr ""
+msgstr "Tema del Correu electrònic "
 
 #. module: mail_follower_custom_notification
 #: field:mail.followers,force_mail_subtype_ids:0
@@ -148,7 +150,7 @@ msgstr "ID"
 #: field:base.patch.models.mixin,__last_update:0
 #: field:mail.subtype.assign.custom.notifications,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: mail_follower_custom_notification
 #: field:mail.subtype.assign.custom.notifications,write_uid:0
@@ -188,7 +190,7 @@ msgstr ""
 #. module: mail_follower_custom_notification
 #: field:mail.message.subtype,custom_notification_model_ids:0
 msgid "Models"
-msgstr ""
+msgstr "Models "
 
 #. module: mail_follower_custom_notification
 #. openerp-web
@@ -246,4 +248,4 @@ msgstr ""
 #. module: mail_follower_custom_notification
 #: view:mail.subtype.assign.custom.notifications:mail_follower_custom_notification.view_mail_subtype_assign_custom_notifications
 msgid "or"
-msgstr ""
+msgstr "o"

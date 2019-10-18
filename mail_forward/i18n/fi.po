@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: social (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 07:21+0000\n"
-"PO-Revision-Date: 2016-09-15 12:45+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2017-05-13 03:01+0000\n"
+"PO-Revision-Date: 2017-05-11 14:14+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-social-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,7 +127,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,date:0
 msgid "Date"
-msgstr ""
+msgstr "Päivämäärä"
 
 #. module: mail_forward
 #. openerp-web
@@ -266,7 +266,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,notification_ids:0
 msgid "Notifications"
-msgstr ""
+msgstr "Ilmoitukset"
 
 #. module: mail_forward
 #: field:mail_forward.compose_message,notified_partner_ids:0
@@ -339,7 +339,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,subject:0
 msgid "Subject"
-msgstr ""
+msgstr "Aihe"
 
 #. module: mail_forward
 #. openerp-web
@@ -375,7 +375,7 @@ msgstr ""
 #. module: mail_forward
 #: field:mail_forward.compose_message,type:0
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #. module: mail_forward
 #: field:mail_forward.compose_message,use_active_domain:0

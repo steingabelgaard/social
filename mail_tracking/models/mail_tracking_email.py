@@ -100,16 +100,20 @@ class MailTrackingEmail(models.Model):
 
     @api.model
     def email_is_bounced(self, email):
-        return len(self._email_score_tracking_filter([
-            ('recipient_address', '=ilike', email),
-            ('state', 'in', ('error', 'rejected', 'spam', 'bounced')),
-        ])) > 0
+        if email:
+            return len(self._email_score_tracking_filter([
+                ('recipient_address', '=', email.lower()),
+                ('state', 'in', ('error', 'rejected', 'spam', 'bounced')),
+            ])) > 0
+        return False
 
     @api.model
     def email_score_from_email(self, email):
-        return self._email_score_tracking_filter([
-            ('recipient_address', '=ilike', email)
-        ]).email_score()
+        if email:
+            return self._email_score_tracking_filter([
+                ('recipient_address', '=', email.lower())
+            ]).email_score()
+        return 0.
 
     @api.model
     def _email_score_weights(self):
@@ -148,11 +152,14 @@ class MailTrackingEmail(models.Model):
     @api.depends('recipient')
     def _compute_recipient_address(self):
         for email in self:
-            matches = re.search(r'<(.*@.*)>', email.recipient)
-            if matches:
-                email.recipient_address = matches.group(1)
+            if email.recipient:
+                matches = re.search(r'<(.*@.*)>', email.recipient)
+                if matches:
+                    email.recipient_address = matches.group(1).lower()
+                else:
+                    email.recipient_address = email.recipient.lower()
             else:
-                email.recipient_address = email.recipient
+                email.recipient_address = False
 
     @api.multi
     @api.depends('name', 'recipient')
@@ -188,11 +195,16 @@ class MailTrackingEmail(models.Model):
             })
 
     @api.multi
-    def _partners_email_bounced_set(self, reason):
-        for tracking_email in self:
+    def _partners_email_bounced_set(self, reason, event=None):
+        recipients = []
+        if event and event.recipient_address:
+            recipients.append(event.recipient_address)
+        else:
+            recipients = list(filter(None, self.mapped('recipient_address')))
+        for recipient in recipients:
             self.env['res.partner'].search([
-                ('email', '=ilike', tracking_email.recipient_address)
-            ]).email_bounced_set(tracking_email, reason)
+                ('email', '=ilike', recipient)
+            ]).email_bounced_set(self, reason, event=event)
 
     @api.multi
     def smtp_error(self, mail_server, smtp_server, exception):
@@ -286,11 +298,14 @@ class MailTrackingEmail(models.Model):
             if not other_ids:
                 vals = tracking_email._event_prepare(event_type, metadata)
                 if vals:
-                    event_ids += event_ids.sudo().create(vals)
+                    events = event_ids.sudo().create(vals)
+                    if event_type in {'hard_bounce', 'spam', 'reject'}:
+                        for event in events:
+                            self.sudo()._partners_email_bounced_set(
+                                event_type, event=event)
+                    event_ids += events
             else:
                 _logger.debug("Concurrent event '%s' discarded", event_type)
-        if event_type in {'hard_bounce', 'spam', 'reject'}:
-            self.sudo()._partners_email_bounced_set(event_type)
         return event_ids
 
     @api.model

@@ -14,14 +14,14 @@
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
 # Paolo Valier, 2016
 # Rudolf Schnapka <rs@techno-flex.de>, 2015-2016
-# SaFi J. <safi2266@gmail.com>, 2015
+# Mustafa J. Kadhem <safi2266@gmail.com>, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: social (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 07:21+0000\n"
-"PO-Revision-Date: 2016-09-08 13:36+0000\n"
+"POT-Creation-Date: 2017-11-16 01:44+0000\n"
+"PO-Revision-Date: 2017-11-23 23:28+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-social-8-0/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -75,17 +75,17 @@ msgstr "Criado em"
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,date:0
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,message_last_post:0
 msgid "Date of the last message posted on the record."
-msgstr ""
+msgstr "Data da última mensagem postada no registro"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,details:0
 msgid "Details"
-msgstr ""
+msgstr "Detalhes"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,details_required:0
@@ -97,7 +97,7 @@ msgstr ""
 #: field:mail.unsubscription,display_name:0
 #: field:mail.unsubscription.reason,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nome para Mostrar"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.mass_mailing.list,not_cross_unsubscriptable:0
@@ -107,17 +107,17 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,email:0
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model,name:mass_mailing_custom_unsubscribe.model_mail_unsubscription
 msgid "Email Thread"
-msgstr ""
+msgstr "Processo Email"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,message_follower_ids:0
 msgid "Followers"
-msgstr ""
+msgstr "Seguidores"
 
 #. module: mass_mailing_custom_unsubscribe
 #: view:mail.unsubscription:mass_mailing_custom_unsubscribe.mail_unsubscription_view_search
@@ -159,7 +159,7 @@ msgstr "Identificação"
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,message_unread:0
 msgid "If checked new messages require your attention."
-msgstr ""
+msgstr "Se marcado novas mensagens requerem sua atenção."
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,success:0
@@ -201,13 +201,13 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,message_last_post:0
 msgid "Last Message Date"
-msgstr ""
+msgstr "Última data de mensagem"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,__last_update:0
 #: field:mail.unsubscription.reason,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última atualização em"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,write_uid:0
@@ -245,7 +245,7 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,message_ids:0
 msgid "Messages"
-msgstr ""
+msgstr "Mensagens"
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,message_ids:0
@@ -255,7 +255,7 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: view:mail.unsubscription:mass_mailing_custom_unsubscribe.mail_unsubscription_view_search
 msgid "Month"
-msgstr ""
+msgstr "Mês"
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,details:0
@@ -265,7 +265,7 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription.reason,name:0
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:mail.unsubscription.reason,name:mass_mailing_custom_unsubscribe.reason_other
@@ -291,13 +291,13 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription.reason,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Sequência"
 
 #. module: mass_mailing_custom_unsubscribe
 #: view:mail.unsubscription:mass_mailing_custom_unsubscribe.mail_unsubscription_view_search
 #: field:mail.unsubscription,success:0
 msgid "Success"
-msgstr ""
+msgstr "Sucesso"
 
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,message_summary:0
@@ -330,7 +330,7 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,message_unread:0
 msgid "Unread Messages"
-msgstr ""
+msgstr "Mensagens não lidas"
 
 #. module: mass_mailing_custom_unsubscribe
 #: view:website:mass_mailing_custom_unsubscribe.reason_form
@@ -364,12 +364,12 @@ msgstr ""
 #. module: mass_mailing_custom_unsubscribe
 #: field:mail.unsubscription,website_message_ids:0
 msgid "Website Messages"
-msgstr ""
+msgstr "Mensagens do website"
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,website_message_ids:0
 msgid "Website communication history"
-msgstr ""
+msgstr "Histórico de mensagens do site"
 
 #. module: mass_mailing_custom_unsubscribe
 #: help:mail.unsubscription,unsubscriber_id:0

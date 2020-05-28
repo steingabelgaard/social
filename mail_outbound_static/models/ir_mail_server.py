@@ -12,6 +12,14 @@ class IrMailServer(models.Model):
         string='Email From',
         help='Set this in order to email from a specific address.'
     )
+    smtp_via = fields.Char(
+        string='Via texts',
+        help='Set this in order to add Via XXX text to from address.'
+    )
+    whitelisted_email = fields.Char(
+        string='Whitelisted from adresses',
+        help='No rewrite of these senders from address'
+    )
 
     @api.model
     def send_email(self, message, mail_server_id=None, smtp_server=None,
@@ -26,9 +34,14 @@ class IrMailServer(models.Model):
 
         if mail_server and mail_server.smtp_from:
             split_from = message['From'].rsplit(' <', 1)
+            if len(split_from) > 1 and split_from[1] in mail_server.whitelisted_email:
+                # No rewrite of whitelisted address
+                return super(IrMailServer, self).send_email(
+                    message, mail_server_id, smtp_server, *args, **kwargs
+                )
             if len(split_from) > 1:
-                email_from = '%s <%s>' % (
-                    split_from[0], mail_server.smtp_from,
+                email_from = '%s %s <%s>' % (
+                    split_from[0], mail_server.smtp_via, mail_server.smtp_from,
                 )
             else:
                 email_from = mail_server.smtp_from

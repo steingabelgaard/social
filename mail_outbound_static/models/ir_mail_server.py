@@ -34,7 +34,7 @@ class IrMailServer(models.Model):
 
         if mail_server and mail_server.smtp_from:
             split_from = message['From'].rsplit(' <', 1)
-            if len(split_from) > 1 and split_from[1] in mail_server.whitelisted_email:
+            if mail_server.whitelisted_email and len(split_from) > 1 and split_from[1] in mail_server.whitelisted_email:
                 # No rewrite of whitelisted address
                 return super(IrMailServer, self).send_email(
                     message, mail_server_id, smtp_server, *args, **kwargs

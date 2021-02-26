@@ -32,7 +32,7 @@ class IrMailServer(models.Model):
         elif not smtp_server:
             mail_server = self.sudo().search([], order='sequence', limit=1)
 
-        if mail_server and mail_server.smtp_from:
+        if mail_server and mail_server.smtp_from and mail_server.smtp_via:
             split_from = message['From'].rsplit(' <', 1)
             if mail_server.whitelisted_email and len(split_from) > 1 and split_from[1] in mail_server.whitelisted_email:
                 # No rewrite of whitelisted address

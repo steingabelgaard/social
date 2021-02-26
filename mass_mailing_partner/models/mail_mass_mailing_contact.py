@@ -1,7 +1,8 @@
-# Copyright 2015 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+# Copyright 2015 Tecnativa - Pedro M. Baeza
 # Copyright 2015 Antonio Espinosa <antonio.espinosa@tecnativa.com>
 # Copyright 2015 Javier Iniesta <javieria@antiun.com>
-# Copyright 2017 David Vidal <david.vidal@tecnativa.com>
+# Copyright 2017 Tecnativa - David Vidal
+# Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
@@ -23,8 +24,10 @@ class MailMassMailingContact(models.Model):
                     ('id', '!=', contact.id)
                 ])
                 if contact.list_ids & other_contact.mapped('list_ids'):
-                    raise ValidationError(_("Partner already exists in one of "
-                                            "these mailing lists"))
+                    raise ValidationError(
+                        _("Partner already exists in one of these "
+                          "mailing lists") + ": %s" % contact.partner_id.display_name
+                    )
 
     @api.onchange('partner_id')
     def _onchange_partner_mass_mailing_partner(self):
@@ -38,18 +41,25 @@ class MailMassMailingContact(models.Model):
             if category_ids:
                 self.tag_ids = category_ids
 
-    @api.model
-    def create(self, vals):
-        record = self.new(vals)
-        if not record.partner_id:
-            record._set_partner()
-        record._onchange_partner_mass_mailing_partner()
-        new_vals = record._convert_to_write(record._cache)
-        new_vals.update(
-            subscription_list_ids=vals.get('subscription_list_ids', False),
-            list_ids=vals.get('list_ids', False)
-        )
-        return super(MailMassMailingContact, self).create(new_vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        new_vals_list = []
+        for vals in vals_list:
+            # Ensure that defaults are loaded (e.g.: import csv or xls)
+            values_w_defaults = self.default_get(self._fields.keys())
+            values_w_defaults.update(vals)
+            record = self.new(values_w_defaults)
+            if not record.partner_id:
+                record._set_partner()
+            record._onchange_partner_mass_mailing_partner()
+            new_vals = record._convert_to_write(record._cache)
+            new_vals.update(
+                subscription_list_ids=values_w_defaults.get(
+                    'subscription_list_ids', False),
+                list_ids=values_w_defaults.get('list_ids', False)
+            )
+            new_vals_list.append(new_vals)
+        return super().create(new_vals_list)
 
     def write(self, vals):
         for contact in self:

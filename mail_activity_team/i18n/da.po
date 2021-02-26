@@ -121,7 +121,7 @@ msgstr "Manglende aktiviteter"
 
 #. module: mail_activity_team
 #. openerp-web
-#: code:addons/mail_activity_team/static/src/xml/systray.xml:8
+#: code:addons/mail_activity_team/static/src/xml/systray.xml:7
 #, python-format
 msgid "My Activities"
 msgstr "Mine aktiviteter"
@@ -134,7 +134,6 @@ msgstr "Mine team aktiviteter"
 #. module: mail_activity_team
 #: model_terms:ir.ui.view,arch_db:mail_activity_team.view_calendar_event_search
 #, fuzzy
-#| msgid "My Team Activities"
 msgid "My Team Meetings"
 msgstr "Mine team aktiviteter"
 
@@ -172,7 +171,7 @@ msgstr "Team"
 
 #. module: mail_activity_team
 #. openerp-web
-#: code:addons/mail_activity_team/static/src/xml/systray.xml:9
+#: code:addons/mail_activity_team/static/src/xml/systray.xml:8
 #, python-format
 msgid "Team Activities"
 msgstr "Team aktiviteter"
@@ -211,6 +210,7 @@ msgstr "Brugere"
 #. module: mail_activity_team
 #: model:ir.model.fields,field_description:mail_activity_team.field_account_invoice__activity_team_user_ids
 #: model:ir.model.fields,field_description:mail_activity_team.field_mail_activity_mixin__activity_team_user_ids
+#: model:ir.model.fields,field_description:mail_activity_team.field_mail_test_activity__activity_team_user_ids
 #: model:ir.model.fields,field_description:mail_activity_team.field_product_product__activity_team_user_ids
 #: model:ir.model.fields,field_description:mail_activity_team.field_product_template__activity_team_user_ids
 #: model:ir.model.fields,field_description:mail_activity_team.field_res_partner__activity_team_user_ids

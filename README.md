@@ -18,8 +18,12 @@ addon | version | summary
 [email_template_qweb](email_template_qweb/) | 10.0.1.0.0 | Use the QWeb templating mechanism for emails
 [mail_as_letter](mail_as_letter/) | 10.0.1.0.0 | This module allows to download a mail message as a pdf letter.
 [mail_attach_existing_attachment](mail_attach_existing_attachment/) | 10.0.1.0.0 | Adding attachment on the object by sending this one
+[mail_check_mailbox_size](mail_check_mailbox_size/) | 10.0.1.0.0 | Send an email summarizing the current space used by a mailbox
 [mail_debrand](mail_debrand/) | 10.0.1.0.0 | Remove Odoo branding in sent emails
 [mail_digest](mail_digest/) | 10.0.1.0.2 | Basic digest mail handling.
+[mail_drop_target](mail_drop_target/) | 10.0.1.0.0 | Attach emails to Odoo by dragging them from your desktop
+[mail_embed_image](mail_embed_image/) | 10.0.1.0.0 | Replace img.src's which start with http with inline cids
+[mail_follower_custom_notification](mail_follower_custom_notification/) | 10.0.1.0.0 | Let followers choose if they want to receive email notifications for a given subscription
 [mail_footer_notified_partner](mail_footer_notified_partner/) | 10.0.1.0.1 | This module adds the list of notified partners in the footer of notification e-mails sent by Odoo.
 [mail_force_queue](mail_force_queue/) | 10.0.0.2.0 | Force outgoing emails to be queued
 [mail_forward](mail_forward/) | 10.0.1.0.0 | Add option to forward messages
@@ -29,6 +33,7 @@ addon | version | summary
 [mail_notify_bounce](mail_notify_bounce/) | 10.0.1.0.2 | Notify bounce emails to preconfigured addresses
 [mail_optional_autofollow](mail_optional_autofollow/) | 10.0.1.0.0 | Choose if you want to automatically add new recipients as followers on mail.compose.message
 [mail_optional_follower_notification](mail_optional_follower_notification/) | 10.0.1.0.1 | Choose if you want to automatically notify followers on mail.compose.message
+[mail_outbound_static](mail_outbound_static/) | 10.0.1.0.0 | Allows you to configure the from header for a mail server.
 [mail_restrict_follower_selection](mail_restrict_follower_selection/) | 10.0.1.0.0 | Define a domain from which followers can be selected
 [mail_sendgrid](mail_sendgrid/) | 10.0.1.0.2 | SendGrid
 [mail_sendgrid_mass_mailing](mail_sendgrid_mass_mailing/) | 10.0.1.0.1 | Mass Mailing with SendGrid

@@ -1,3 +1,2 @@
-premailer
-simplejson
-sendgrid
+premailer==3.6.2
+sendgrid<v6.0.0

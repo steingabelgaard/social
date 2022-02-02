@@ -5,5 +5,4 @@
             <field name="key">base_mail_bcc.bcc_to</field>
             <field name="value">root@example.com</field>
         </record>
-    </data>
-</openerp>
+</odoo>

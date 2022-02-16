@@ -11,7 +11,7 @@ class IrMailServer(models.Model):
     @api.model
     def send_email(self, message, mail_server_id=None, smtp_server=None, smtp_port=None,
                    smtp_user=None, smtp_password=None, smtp_encryption=None, smtp_debug=False,
-                   smtp_session=None)
+                   smtp_session=None):
         """"Add global bcc email addresses"""
 
         # These are added here in send_email instead of build_email

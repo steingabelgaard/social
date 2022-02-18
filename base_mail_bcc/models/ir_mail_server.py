@@ -4,6 +4,9 @@ from email.utils import COMMASPACE
 
 from odoo import models, api
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class IrMailServer(models.Model):
     _inherit = "ir.mail_server"
@@ -23,14 +26,15 @@ class IrMailServer(models.Model):
             get_param("base_mail_bcc.bcc_to")
 
         if config_email_bcc:
-            config_email_bcc = config_email_bcc.encode('ascii')
+            config_email_bcc = config_email_bcc.split(',')
             existing_bcc = []
             if message['Bcc']:
                 existing_bcc.append(message['Bcc'])
                 del message['Bcc']
+            _logger.info('Exist: %s %s Config: %s %s', type(existing_bcc), existing_bcc, type(config_email_bcc), config_email_bcc)
             message['Bcc'] = COMMASPACE.join(
-                existing_bcc + config_email_bcc.split(',')
-            )
+                existing_bcc + config_email_bcc
+            ).encode('ascii')
 
         return super(IrMailServer, self).send_email(
             message, mail_server_id=mail_server_id, smtp_server=smtp_server,

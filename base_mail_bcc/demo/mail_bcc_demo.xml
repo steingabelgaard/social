@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odooo>
+<odoo>
     <data noupdate="1">
         <record id="mail_bcc" model="ir.config_parameter">
             <field name="key">base_mail_bcc.bcc_to</field>

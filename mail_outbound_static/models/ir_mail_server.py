@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import api, fields, models
+from odoo.tools import formataddr
 
 
 class IrMailServer(models.Model):
@@ -40,8 +41,8 @@ class IrMailServer(models.Model):
                     message, mail_server_id, smtp_server, *args, **kwargs
                 )
             if len(split_from) > 1:
-                email_from = '%s %s <%s>' % (
-                    split_from[0], mail_server.smtp_via, mail_server.smtp_from,
+                email_from = formataddr(('%s %s' % (split_from[0].replace('"', '')),
+                                         mail_server.smtp_via, mail_server.smtp_from)
                 )
             else:
                 email_from = mail_server.smtp_from

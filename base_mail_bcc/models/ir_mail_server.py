@@ -21,7 +21,7 @@ class IrMailServer(models.Model):
         #  because build_email is independent from the database and does not
         #  have a cursor as parameter.
 
-        ir_config_parameter = self.env["ir.config_parameter"]
+        ir_config_parameter = self.sudo().env["ir.config_parameter"]
         config_email_bcc = ir_config_parameter.\
             get_param("base_mail_bcc.bcc_to")
 

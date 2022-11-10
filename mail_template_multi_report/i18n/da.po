@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * mail_template_multi_report
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-25 18:06+0000\n"
-"PO-Revision-Date: 2016-11-25 18:06+0000\n"
+"PO-Revision-Date: 2022-11-10 17:09+0100\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Danish (https://www.transifex.com/oca/teams/23907/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. module: mail_template_multi_report
 #: help:email.template.report.line,condition:0
@@ -24,11 +25,13 @@ msgid ""
 "An expression evaluated to determine if the report is to be attached to the "
 "email. If blank, the report will always be attached."
 msgstr ""
+"Et udtryk, der evalueres for at afgøre, om rapporten skal vedhæftes e-"
+"mailen. Hvis tom, vil rapporten altid blive vedhæftet."
 
 #. module: mail_template_multi_report
 #: field:email.template.report.line,condition:0
 msgid "Condition"
-msgstr ""
+msgstr "Betingelse"
 
 #. module: mail_template_multi_report
 #: field:email.template.report.line,create_uid:0
@@ -48,12 +51,12 @@ msgstr "Vist navn"
 #. module: mail_template_multi_report
 #: field:email.template.report.line,template_id:0
 msgid "Email Template"
-msgstr ""
+msgstr "Email-skabelon"
 
 #. module: mail_template_multi_report
 #: model:ir.model,name:mail_template_multi_report.model_email_template_report_line
 msgid "Email Template Report Line"
-msgstr ""
+msgstr "Email skabelon rapport linie"
 
 #. module: mail_template_multi_report
 #: model:ir.model,name:mail_template_multi_report.model_email_template
@@ -86,18 +89,21 @@ msgid ""
 "Name to use for the generated report file (may contain placeholders)\n"
 "The extension can be omitted and will then come from the report type."
 msgstr ""
+"Navn, der skal bruges til den genererede rapportfil (kan indeholde "
+"placeholdere)\n"
+"Filtypen  kan udelades og vil så komme fra rapport typen."
 
 #. module: mail_template_multi_report
 #: field:email.template.report.line,report_template_id:0
 msgid "Optional report to print and attach"
-msgstr ""
+msgstr "Valgfri rapport at udskrive og vedhæfte"
 
 #. module: mail_template_multi_report
 #: field:email.template,report_line_ids:0
 msgid "Other Reports"
-msgstr ""
+msgstr "Yderligere rapporter"
 
 #. module: mail_template_multi_report
 #: field:email.template.report.line,report_name:0
 msgid "Report Filename"
-msgstr ""
+msgstr "Rapport filnavn"

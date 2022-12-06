@@ -17,7 +17,13 @@ class MailTemplate(models.Model):
 
     @api.model
     def generate_email(self, res_ids, fields=None):
-        results = super().generate_email(res_ids, fields=fields)
+        multi_mode = True
+        results = super(MailTemplate, self).generate_email(res_ids, fields=fields)
+        if not self.report_line_ids:
+            return results
+        if isinstance(res_ids, int):
+            multi_mode = False
+            results = {res_ids: results}
 
         for report_line in self.report_line_ids:
             records = self.env[self.model_id.model].browse(res_ids)
@@ -58,4 +64,4 @@ class MailTemplate(models.Model):
                 results[rec.id].setdefault('attachments', [])
                 results[rec.id]['attachments'].append((report_name, result))
 
-        return results
+        return multi_mode and results or results[res_ids]

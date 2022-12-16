@@ -41,7 +41,7 @@ class IrMailServer(models.Model):
                     message, mail_server_id, smtp_server, *args, **kwargs
                 )
             if len(split_from) > 1:
-                email_from = formataddr(('%s %s' % (split_from[0].replace('"', ''), mail_server.smtp_via),
+                email_from = formataddr(('%s %s' % (split_from[1].replace('"', ''), mail_server.smtp_via),
                                          mail_server.smtp_from)
                 )
             else:

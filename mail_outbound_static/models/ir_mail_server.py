@@ -34,14 +34,15 @@ class IrMailServer(models.Model):
             mail_server = self.sudo().search([], order='sequence', limit=1)
 
         if mail_server and mail_server.smtp_from and mail_server.smtp_via:
-            split_from = tools.email_split(message['From'])
-            if mail_server.whitelisted_email and len(split_from) == 1 and split_from[0] in mail_server.whitelisted_email:
+            split_from = message['From'].rsplit(' <', 1)
+            from_email = tools.email_split(message['From'])
+            if mail_server.whitelisted_email and from_email and from_email in mail_server.whitelisted_email:
                 # No rewrite of whitelisted address
                 return super(IrMailServer, self).send_email(
                     message, mail_server_id, smtp_server, *args, **kwargs
                 )
             if len(split_from) > 1:
-                email_from = formataddr(('%s %s' % (split_from[1].replace('"', ''), mail_server.smtp_via),
+                email_from = formataddr(('%s %s' % (split_from[0].replace('"', ''), mail_server.smtp_via),
                                          mail_server.smtp_from)
                 )
             else:

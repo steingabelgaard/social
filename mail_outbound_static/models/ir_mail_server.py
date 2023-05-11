@@ -21,6 +21,10 @@ class IrMailServer(models.Model):
         string='Whitelisted from adresses',
         help='No rewrite of these senders from address'
     )
+    force_from = fields.Char(
+        string='Force Email From',
+        help='Set this in order to email from a specific address. Overides Email From'
+    )
 
     @api.model
     def send_email(self, message, mail_server_id=None, smtp_server=None,
@@ -33,20 +37,23 @@ class IrMailServer(models.Model):
         elif not smtp_server:
             mail_server = self.sudo().search([], order='sequence', limit=1)
 
-        if mail_server and mail_server.smtp_from and mail_server.smtp_via:
-            split_from = message['From'].rsplit(' <', 1)
-            from_email = tools.email_split(message['From'])
-            if mail_server.whitelisted_email and len(from_email) == 1 and from_email[0] in mail_server.whitelisted_email:
-                # No rewrite of whitelisted address
-                return super(IrMailServer, self).send_email(
-                    message, mail_server_id, smtp_server, *args, **kwargs
-                )
-            if len(split_from) > 1:
-                email_from = formataddr(('%s %s' % (split_from[0].replace('"', ''), mail_server.smtp_via),
-                                         mail_server.smtp_from)
-                )
+        if mail_server and mail_server.smtp_from and (mail_server.smtp_via or mail_server.force_from):
+            if mail_server.force_from:
+                email_from = formataddr(email_from.split('|'))
             else:
-                email_from = mail_server.smtp_from
+                split_from = message['From'].rsplit(' <', 1)
+                from_email = tools.email_split(message['From'])
+                if mail_server.whitelisted_email and len(from_email) == 1 and from_email[0] in mail_server.whitelisted_email:
+                    # No rewrite of whitelisted address
+                    return super(IrMailServer, self).send_email(
+                        message, mail_server_id, smtp_server, *args, **kwargs
+                    )
+                if len(split_from) > 1:
+                    email_from = formataddr(('%s %s' % (split_from[0].replace('"', ''), mail_server.smtp_via),
+                                            mail_server.smtp_from)
+                    )
+                else:
+                    email_from = mail_server.smtp_from
 
             message.replace_header('From', email_from)
             bounce_alias = self.env['ir.config_parameter'].sudo().get_param(

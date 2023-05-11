@@ -16,6 +16,7 @@
                 <field name="smtp_from" />
                 <field name="smtp_via" />
                 <field name="whitelisted_email" />
+                <field name="force_from" />
             </xpath>
         </field>
     </record>

@@ -39,7 +39,7 @@ class IrMailServer(models.Model):
 
         if mail_server and mail_server.smtp_from and (mail_server.smtp_via or mail_server.force_from):
             if mail_server.force_from:
-                email_from = formataddr(email_from.split('|'))
+                email_from = formataddr(mail_server.force_from.split('|'))
             else:
                 split_from = message['From'].rsplit(' <', 1)
                 from_email = tools.email_split(message['From'])

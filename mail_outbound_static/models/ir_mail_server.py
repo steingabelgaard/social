@@ -1,8 +1,18 @@
 # Copyright 2017 LasLabs Inc.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import smtplib
+import threading
+
 from odoo import api, fields, models, tools
 from odoo.tools import formataddr
+from odoo.tools import ustr
+from odoo.tools.translate import _
+
+from odoo.addons.base.models.ir_mail_server import (
+    MailDeliveryException,
+    extract_rfc2822_addresses,
+)
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -39,6 +49,7 @@ class IrMailServer(models.Model):
             mail_server = self.sudo().browse(mail_server_id)
         elif not smtp_server:
             mail_server = self.sudo().search([], order='sequence', limit=1)
+            mail_server_id = mail_server.id
 
         if mail_server and mail_server.smtp_from and (mail_server.smtp_via or mail_server.force_from):
             if mail_server.force_from:

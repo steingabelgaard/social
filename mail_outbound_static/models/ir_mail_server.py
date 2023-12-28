@@ -81,7 +81,7 @@ class IrMailServer(models.Model):
                     message.add_header('Return-Path', email_from)
             if mail_server.force_from:
                 _logger.info('Force from: %s', email_from)
-                self.send_email_force_from(
+                return self.send_email_force_from(
                     message, mail_server_id, smtp_server, *args, **kwargs
                 )
 

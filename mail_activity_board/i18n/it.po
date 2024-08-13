@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-28 15:44+0000\n"
-"Last-Translator: Alberto Carollo <baba75@gmail.com>\n"
+"PO-Revision-Date: 2023-12-07 16:33+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: mail_activity_board
 #: model_terms:ir.ui.view,arch_db:mail_activity_board.mail_activity_view_kanban
@@ -65,12 +65,12 @@ msgstr "Attività"
 #. module: mail_activity_board
 #: model_terms:ir.ui.view,arch_db:mail_activity_board.mail_activity_view_form_board
 msgid "Activity Form"
-msgstr "Scheda Attività"
+msgstr "Scheda attività"
 
 #. module: mail_activity_board
 #: model:ir.model,name:mail_activity_board.model_mail_activity_mixin
 msgid "Activity Mixin"
-msgstr "Attività Riunite"
+msgstr "Mixin attività"
 
 #. module: mail_activity_board
 #: model:ir.model.fields,field_description:mail_activity_board.field_mail_activity__calendar_event_id_partner_ids
@@ -120,7 +120,7 @@ msgstr "Mostra le attività programmate per il prossimo mese."
 #. module: mail_activity_board
 #: model:ir.model.fields,field_description:mail_activity_board.field_mail_activity__calendar_event_id_start
 msgid "Start"
-msgstr "Inizio"
+msgstr "Avvia"
 
 #. module: mail_activity_board
 #: model:ir.model.fields,help:mail_activity_board.field_mail_activity__calendar_event_id_start
@@ -141,4 +141,4 @@ msgstr "Utente"
 #. module: mail_activity_board
 #: model_terms:ir.ui.view,arch_db:mail_activity_board.mail_activity_view_form_board
 msgid "e.g. Discuss proposal"
-msgstr "es. Discussione proposta"
+msgstr "es. proposta discussione"
